@@ -10,7 +10,6 @@ export default defineConfig({
       input: {
         index: page('index.html'),
         cream: page('cream/index.html'),
-        smash: page('smash-vs-juicy/index.html'),
         griddle: page('griddle/index.html'),
       },
     },

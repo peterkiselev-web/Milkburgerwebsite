@@ -2,15 +2,14 @@
 
 Draft website concepts for **Milk Burger**, the burger and Champagne restaurant at 50 Westbourne Grove, Notting Hill.
 
-Three directions, the same content:
+Two drafts, the same content, to compare before refining the preferred one:
 
 | Concept | Path | In one line |
 | --- | --- | --- |
 | The Griddle | `/griddle/` | Scroll and a burger is cooked in front of you |
 | Cream | `/cream/` | Minimal, like the Instagram and the printed burger papers |
-| Smash vs Juicy | `/smash-vs-juicy/` | Pick a side and the site re-themes around it |
 
-The landing page at `/` links all three.
+The landing page at `/` links both.
 
 ## Run it
 

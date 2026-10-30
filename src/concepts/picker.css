@@ -1,4 +1,4 @@
-/* The landing page that links the three concepts. */
+/* The landing page that links the two concepts. */
 
 body.picker {
   background: var(--cream);
@@ -105,24 +105,6 @@ body.picker {
   background: var(--paper);
   border: 1.5px solid rgb(90 22 32 / 0.2);
   color: var(--burgundy);
-}
-
-.concept--smash a {
-  background: linear-gradient(90deg, var(--burgundy) 50%, var(--pale-blue) 50%);
-  color: var(--cream);
-}
-
-.concept--smash h2 {
-  align-self: flex-start;
-  margin-bottom: 0;
-}
-
-.concept--smash h2,
-.concept--smash p,
-.concept--smash .concept__go {
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgb(42 13 18 / 0.75);
 }
 
 .picker__note {

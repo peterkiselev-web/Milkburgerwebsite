@@ -41,7 +41,7 @@ The cinematic concept plays one burger's journey as you scroll, from raw beef on
 ---
 
 ## Optional extras
-- **09 · Team Juicy:** the same sequence beats, but a thick patty from aged beef, cut in half to show a juicy centre. Useful for the Smash vs Juicy concept.
+- **09 · Team Juicy:** the same sequence beats, but a thick patty from aged beef, cut in half to show a juicy centre, for the bone marrow and baconnaise burgers.
 - **10 · The Pie:** a golden fried cherry pie broken open over vanilla soft serve, glossy cherry filling oozing out.
 
 ## What happens to the clips
