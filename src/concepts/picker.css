@@ -1,0 +1,133 @@
+/* The landing page that links the three concepts. */
+
+body.picker {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.picker__main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 96px) var(--gutter) 80px;
+}
+
+.picker__logo {
+  width: min(420px, 80%);
+}
+
+.picker__kicker {
+  margin-top: 36px;
+  color: var(--rust);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.picker__title {
+  max-width: 16ch;
+  margin-top: 12px;
+  color: var(--burgundy);
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 0.95;
+}
+
+.picker__lede {
+  max-width: 60ch;
+  margin-top: 20px;
+  font-size: 1.15rem;
+}
+
+.concepts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.concept a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+  padding: 28px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.concept a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgb(42 13 18 / 0.18);
+}
+
+.concept__n {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  opacity: 0.7;
+}
+
+.concept h2 {
+  margin-top: auto;
+  padding-top: 40px;
+  font-family: var(--serif);
+  font-size: 2.6rem;
+}
+
+.concept p {
+  margin-top: 10px;
+  font-size: 0.98rem;
+  opacity: 0.88;
+}
+
+.concept__go {
+  margin-top: 22px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.concept__go::after {
+  content: ' →';
+}
+
+.concept--griddle a {
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgb(128 34 48 / 0.6), transparent 60%),
+    linear-gradient(180deg, #1a1414, #0d0a0a);
+  color: var(--cream);
+}
+
+.concept--cream a {
+  background: var(--paper);
+  border: 1.5px solid rgb(90 22 32 / 0.2);
+  color: var(--burgundy);
+}
+
+.concept--smash a {
+  background: linear-gradient(90deg, var(--burgundy) 50%, var(--pale-blue) 50%);
+  color: var(--cream);
+}
+
+.concept--smash h2 {
+  align-self: flex-start;
+  margin-bottom: 0;
+}
+
+.concept--smash h2,
+.concept--smash p,
+.concept--smash .concept__go {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgb(42 13 18 / 0.75);
+}
+
+.picker__note {
+  max-width: 70ch;
+  margin-top: 40px;
+  font-size: 0.92rem;
+  opacity: 0.8;
+}

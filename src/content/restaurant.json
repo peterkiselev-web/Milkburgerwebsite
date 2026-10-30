@@ -1,0 +1,179 @@
+{
+  "draft": true,
+  "name": "Milk Burger",
+  "tagline": "Burgers, but make it sexy.",
+  "positioning": "Burgers & Champagne",
+  "intro": "A burger and Champagne restaurant on Westbourne Grove. The standards of a Michelin-starred kitchen, applied to food you eat with your hands, with a glass of Billecart-Salmon on the side.",
+
+  "contact": {
+    "street": "50 Westbourne Grove",
+    "city": "London",
+    "postcode": "W2 5SH",
+    "area": "Notting Hill",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Milk+Burger+50+Westbourne+Grove+London+W2+5SH",
+    "lat": 51.51563,
+    "lng": -0.19163,
+    "phone": { "value": "07754 667 939", "confirmed": false },
+    "instagram": { "handle": "@milkburger.uk", "url": "https://www.instagram.com/milkburger.uk/" }
+  },
+
+  "hours": {
+    "timezone": "Europe/London",
+    "summary": "Every day, 12pm to 9pm",
+    "detail": "The kitchen runs straight through. No break between lunch and dinner.",
+    "weekly": { "open": "12:00", "close": "21:00" },
+    "overrides": []
+  },
+
+  "walkIn": {
+    "headline": "Walk-ins only",
+    "body": "No bookings. Just come in."
+  },
+
+  "transport": [
+    { "line": "Royal Oak", "detail": "Circle & Hammersmith and City lines, about a 6 minute walk" },
+    { "line": "Bayswater", "detail": "Circle & District lines, about a 6 minute walk" },
+    { "line": "Paddington", "detail": "Elizabeth line and mainline rail, about 1km" }
+  ],
+
+  "teams": {
+    "headline": "Smash or juicy?",
+    "body": "Every burger lover is on a team. Alina is smash army. Dima is team juicy. Most places pick a side. Milk Burger does both, properly.",
+    "quote": { "text": "I'm smash army and Dima is juicy, so we have both of them.", "by": "Alina Kosichkina, co-founder" },
+    "smash": { "label": "Team Smash", "line": "Thin, crisp-edged, well done. Cheese everywhere." },
+    "juicy": { "label": "Team Juicy", "line": "Thick, juicy, aged beef. Napkins essential." }
+  },
+
+  "menu": {
+    "pricesConfirmed": false,
+    "note": "Draft menu compiled from press coverage. Dish names and prices to be confirmed by the kitchen.",
+    "sections": [
+      {
+        "id": "burgers",
+        "title": "Burgers",
+        "items": [
+          { "name": "Classic Smash", "description": "Two thin, well-done patties, deep orange melted cheese and thick-cut pickles in a glossy milk bun.", "team": "smash", "price": null },
+          { "name": "Spicy Smash", "description": "The classic, with heat.", "team": "smash", "price": null },
+          { "name": "Bone Marrow & Truffle", "description": "The headliner. A thick, juicy patty with bone marrow and truffle.", "team": "juicy", "price": null, "signature": true },
+          { "name": "Baconnaise", "description": "A thick, juicy patty with our baconnaise: house mayo made with bacon powder. Messy, with a kick.", "team": "juicy", "price": null },
+          { "name": "Turkey", "description": "Turkey patty with dolce gorgonzola sauce.", "team": null, "price": null },
+          { "name": "The Mexican", "description": "Beef patty, salsa and avocado, wrapped in a tortilla and fried.", "team": null, "price": null, "nameConfirmed": false }
+        ]
+      },
+      {
+        "id": "sandwiches",
+        "title": "Sandwiches",
+        "items": [
+          { "name": "Cuban", "description": "The Milk Burger take on the classic Cuban sandwich.", "price": null },
+          { "name": "Katsu Sando", "description": "A Japanese-style katsu sandwich.", "price": null }
+        ]
+      },
+      {
+        "id": "start",
+        "title": "To start",
+        "items": [
+          { "name": "Fried Camembert", "description": "Crisp outside, molten inside, with hot honey.", "price": null },
+          { "name": "Chicken Nuggets", "description": "The grown-up version.", "price": null },
+          { "name": "Vegetable Tempura", "description": "Vegetables in a light, crisp tempura batter.", "price": null }
+        ]
+      },
+      {
+        "id": "sides",
+        "title": "On the side",
+        "items": [
+          { "name": "Fries", "description": "Medium-cut, crunchy, properly salted. Chosen after many, many tastings.", "price": null }
+        ]
+      },
+      {
+        "id": "sweet",
+        "title": "Sweet",
+        "items": [
+          { "name": "Fried Cherry Pie", "description": "The fried cherry pie you remember, made properly: thirty-odd doughs tested, virgin coconut oil instead of palm oil. With vanilla soft serve.", "price": null, "signature": true },
+          { "name": "Doughnuts", "description": "Rolled in cinnamon sugar, with chocolate soft serve.", "price": null },
+          { "name": "Soft Serve", "description": "Vanilla or chocolate.", "price": null }
+        ]
+      },
+      {
+        "id": "drinks",
+        "title": "To drink",
+        "items": [
+          { "name": "Champagne", "description": "House pour by Billecart-Salmon, by the glass or the bottle.", "price": null },
+          { "name": "Wine", "description": "By the glass and bottle.", "price": null },
+          { "name": "Cocktails", "description": "", "price": null },
+          { "name": "Beer", "description": "", "price": null },
+          { "name": "House Lemonade", "description": "", "price": null }
+        ]
+      }
+    ]
+  },
+
+  "kitchen": {
+    "headline": "Nowhere to hide",
+    "points": [
+      { "title": "Aged beef", "body": "From Mr Txuleta, the aged-beef specialists behind Ibaii in the City." },
+      { "title": "Every sauce from scratch", "body": "Baconnaise, dolce gorgonzola, the lot. Nothing comes out of a jar." },
+      { "title": "Fries, tested", "body": "Medium-cut, after many, many tastings." },
+      { "title": "A pie, obsessed over", "body": "More than thirty doughs before the cherry pie was right." }
+    ]
+  },
+
+  "chef": {
+    "name": "Jorge Paredes",
+    "role": "Executive Chef",
+    "bio": [
+      "Jorge was executive chef at Michelin-starred Sabor under Nieves Barragán, then head chef at OMA and AGORA in Borough Market.",
+      "OMA won its first Michelin star in under a year, the first Greek restaurant in the UK to earn one, and was named Michelin Opening of the Year.",
+      "At Milk Burger he brings the same standards to food that's meant to be eaten with your hands."
+    ],
+    "quote": "A burger doesn't give you anywhere to hide. The produce, the seasoning, the technique all have to be right.",
+    "instagram": "https://www.instagram.com/jorge_g_paredes/"
+  },
+
+  "founders": {
+    "names": "Alina Kosichkina & Dima Zakhodiakin",
+    "headline": "Built by people who couldn't find the burger they wanted",
+    "bio": [
+      "Alina and Dima opened their first burger restaurant in Kyiv in 2013 and went on to build 32 restaurants there.",
+      "After moving to London they settled in Notting Hill, and couldn't find the place they wanted: a great burger, somewhere comfortable and beautiful, with proper cocktails, wine and Champagne.",
+      "So they built it."
+    ],
+    "quote": { "text": "People are tired of overly complicated food, but at the same time we care more and more about the quality of what we eat.", "by": "Alina Kosichkina" }
+  },
+
+  "room": {
+    "headline": "Two rooms. Pick your mood.",
+    "designer": "Designed by David Archer, the designer behind Chiltern Firehouse and The Standard.",
+    "rooms": [
+      { "name": "The tiled room", "body": "Intimate and chocolate-box: burgundy tile, stainless steel, rust-red banquettes." },
+      { "name": "The light room", "body": "Airy and calm: pale blue, soft timber, white panelling." }
+    ],
+    "details": "The two-tone idea runs all the way down to the printed burger papers and the matchboxes."
+  },
+
+  "history": {
+    "headline": "No. 50 has always been a burger address",
+    "body": "This corner of Westbourne Grove served burgers for nearly twenty years before the pandemic closed it. Milk Burger picked up where it left off.",
+    "quote": { "text": "The walls remember all the burger success before.", "by": "Alina Kosichkina" }
+  },
+
+  "press": [
+    { "outlet": "olive", "quote": "Unlike many other viral burger spots, Milk Burger does great desserts worth saving room for.", "url": "https://www.olivemagazine.com/restaurants/london/best-restaurants-in-notting-hill/" },
+    { "outlet": "Broadsheet", "quote": "Will please team smash burger and team juicy burger alike.", "url": "https://broadsheet.com/london/articles/milk-burger-notting-hill" },
+    { "outlet": "The Infatuation", "quote": "Clearly understands our pyramid of needs.", "url": "https://www.theinfatuation.com/london/reviews/milk-burger-westbourne-grove" },
+    { "outlet": "The London Economic", "quote": "Somewhere you can eat with your hands while drinking something that comes with a cork.", "url": "https://www.thelondoneconomic.com/food-drink/champagne-and-cheeseburgers-michelin-starred-chef-brings-high-low-dining-to-notting-hill-410308/" },
+    { "outlet": "The Nudge", "quote": "The pinnacle of human achievement or the beginning of the end.", "url": "https://thenudge.com/milk-burger/" },
+    { "outlet": "SquareMeal", "quote": "A burger and a glass of fizz is very much the intended order.", "url": "https://www.squaremeal.co.uk/restaurants/milk-burger_31324" },
+    { "outlet": "London On The Inside", "quote": "All about that high low lifestyle.", "url": "https://londontheinside.com/a-burger-champagne-restaurant-is-opening-in-notting-hill/" },
+    { "outlet": "Hot Dinners", "quote": "Right now the city is in the grips of the chef-led burger.", "url": "https://www.hot-dinners.com/2026093015406/Gastroblog/Latest-news/milk-burger-opens-notting-hill" }
+  ],
+
+  "faq": [
+    { "q": "Can I book a table?", "a": "No. We're walk-ins only, every day from 12pm to 9pm.", "confirmed": true },
+    { "q": "Do you close between lunch and dinner?", "a": "Never. The kitchen runs straight through from noon until 9pm.", "confirmed": true },
+    { "q": "Can I bring the kids?", "a": "Yes, children are welcome.", "confirmed": false },
+    { "q": "What's there for vegetarians?", "a": "Fried camembert, vegetable tempura, fries and every dessert. Ask about a vegetarian burger.", "confirmed": false },
+    { "q": "I have an allergy. Can you help?", "a": "Every sauce is made in our kitchen, so the team can tell you exactly what's in each dish. Please tell your server before you order.", "confirmed": false },
+    { "q": "Can I hire the restaurant for a party?", "a": "Get in touch through Instagram and we'll see what we can do.", "confirmed": false },
+    { "q": "Do you deliver?", "a": "To be confirmed.", "confirmed": false }
+  ]
+}
