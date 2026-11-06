@@ -11,13 +11,11 @@ import { loadFramePlayer } from './griddle-frames.js';
 const { content, esc } = s;
 
 const STAGES = [
-  { title: 'Aged beef', line: 'From Mr Txuleta, the aged-beef specialists behind Ibaii.' },
-  { title: 'Smash', line: 'Hard onto hot stainless steel. Lacy edges in seconds.' },
+  { title: 'Smash', line: 'Aged beef from Mr Txuleta, smashed hard onto hot stainless steel.' },
   { title: 'Crust', line: 'Scraped, flipped, deep brown. “A burger doesn’t give you anywhere to hide.” Jorge Paredes' },
-  { title: 'Melt', line: 'Deep orange cheese over the edges.' },
-  { title: 'Bun', line: 'The glossy milk bun.' },
-  { title: 'Build', line: 'Sauces made from scratch. Thick-cut pickles. A gentle press.' },
+  { title: 'Melt', line: 'Cheese over the edges, straight onto the steel.' },
   { title: 'Pour', line: 'Champagne by the glass. The house pour is Billecart-Salmon.' },
+  { title: 'Build', line: 'Sauces made from scratch. Thick-cut pickles. The glossy milk bun.' },
 ];
 
 const captions = STAGES.map(
@@ -100,7 +98,9 @@ const intro = document.querySelector('.film__intro');
 const bar = document.querySelector('.film__progress span');
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let renderer = createStandIn(canvas, { photos: [images.spread.fallback, images.burger.src] });
+// Nothing is drawn until we know whether the real footage exists, so the
+// stand-in never flashes up before the film.
+let renderer = { resize() {}, draw() {} };
 
 function progress() {
   const scrollable = film.offsetHeight - window.innerHeight;
@@ -113,14 +113,15 @@ function paint(p) {
   captionEls.forEach((el, i) => {
     const local = beats - i;
     const last = i === captionEls.length - 1;
-    const fadeIn = clamp(local / 0.2);
+    // The first caption waits for the opening title to clear.
+    const fadeIn = i === 0 ? clamp((local - 0.25) / 0.2) : clamp(local / 0.2);
     const fadeOut = last ? 1 : clamp((1 - local) / 0.2);
     const vis = fadeIn * fadeOut;
     el.style.opacity = vis;
     el.style.transform = `translateY(${(1 - vis) * 24}px)`;
     el.style.pointerEvents = vis > 0.5 ? 'auto' : 'none';
   });
-  intro.style.opacity = clamp(1 - beats / 0.35);
+  intro.style.opacity = clamp(1 - beats / 0.25);
   bar.style.transform = `scaleX(${p})`;
 }
 
@@ -152,10 +153,15 @@ window.addEventListener('resize', () => {
   reduced ? paint(1) : requestPaint();
 });
 
-loadFramePlayer(canvas, `${import.meta.env.BASE_URL}griddle/frames/`).then((player) => {
-  if (!player) return;
-  renderer = player;
-  document.documentElement.classList.add('has-footage');
+const repaint = () => (reduced ? paint(1) : requestPaint());
+
+loadFramePlayer(canvas, `${import.meta.env.BASE_URL}griddle/frames/`, { onFrame: repaint }).then((player) => {
+  if (player) {
+    renderer = player;
+    document.documentElement.classList.add('has-footage');
+  } else {
+    renderer = createStandIn(canvas, { photos: [images.spread.fallback, images.burger.src] });
+  }
   renderer.resize();
-  reduced ? paint(1) : requestPaint();
+  repaint();
 });

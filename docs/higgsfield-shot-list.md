@@ -46,3 +46,20 @@ The cinematic concept plays one burger's journey as you scroll, from raw beef on
 
 ## What happens to the clips
 The site extracts each clip into a sequence of still frames, which the browser draws onto a canvas as you scroll. This is smoother on iPhones than scrubbing the video directly, and it lets the site load the first frames instantly while the rest stream in. Until the clips arrive, the prototype uses animated stand-ins.
+
+---
+
+## What was generated (first draft, November 2026)
+
+Six clips on the Basic plan (75 credits in total, 12.5 each): MiniMax H3 Max, 768p, 5 seconds, no audio. In film order:
+
+| File | Beat | How | Notes |
+| --- | --- | --- | --- |
+| 01-smash.mp4 | Drop and smash | Text only | Looks great, but the press is a tin-shaped block and the beef reads as whole steak, not mince. First to redo. |
+| 02-crust.mp4 | Crust and flip | Text only | Patty stays thick and pink on top; a hand appears briefly. Second to redo. |
+| 03-melt.mp4 | Cheese melt | Text only | Strong. |
+| 04-pour.mp4 | Champagne pour | Text only | Strong. No label on the bottle, deliberately. |
+| 05-build.mp4 | Build | Burger photo as reference | Strong; the finished burger matches theirs closely. |
+| 06-hero.mp4 | Hero push-in | Burger photo as the start frame | Strong and faithful. Came out near-square, so the frame script places it on a blurred copy of itself for desktop. |
+
+The clips live in the Higgsfield account and in `footage/` locally (not committed). To regenerate a beat, reuse its prompt above with the fixes noted, drop the new file into `footage/` under the same name and rerun `bash scripts/extract-frames.sh`.

@@ -38,7 +38,7 @@ npm run build    # static site in dist/
 
 ## Adding the film to The Griddle
 1. Export the clips from Higgsfield as described in `docs/higgsfield-shot-list.md`.
-2. Put them in `footage/` named `01-drop.mp4`, `02-smash.mp4` and so on.
+2. Put them in `footage/`, named so they sort in film order (`01-smash.mp4`, `02-crust.mp4` and so on). The current six are listed at the end of the shot list.
 3. Run `bash scripts/extract-frames.sh` (needs ffmpeg).
 4. Reload `/griddle/`. The stand-in animation is replaced by the real footage.
 
