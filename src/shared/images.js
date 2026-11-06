@@ -14,9 +14,39 @@ export const images = {
   spread: {
     src: `${base}images/burgers-champagne.jpg`,
     fallback: 'https://assets.thelondoneconomic.com/uploads/2026/10/Milk-Burger-4625-scaled.jpg',
-    alt: 'Two burgers, fries and two glasses of Champagne',
-    width: 2560,
-    height: 1920,
+    alt: 'Two burgers, fries and two glasses at a timber table in front of tan leather banquettes',
+    width: 1600,
+    height: 1200,
+  },
+  founders: {
+    src: `${base}images/founders.jpg`,
+    alt: 'Alina Kosichkina and Dima Zakhodiakin at a table by a leather banquette',
+    width: 960,
+    height: 1280,
+  },
+  chef: {
+    src: `${base}images/chef.jpg`,
+    alt: 'Jorge Paredes at work in the Milk Burger kitchen',
+    width: 944,
+    height: 1280,
+  },
+  mexican: {
+    src: `${base}images/dish-mexican.jpg`,
+    alt: 'The Mexican-style burger cut in half, wrapped in a fried tortilla, on printed Milk Burger paper',
+    width: 1200,
+    height: 900,
+  },
+  camembert: {
+    src: `${base}images/dish-camembert.jpg`,
+    alt: 'Fried camembert with a dipping sauce on printed Milk Burger paper',
+    width: 1200,
+    height: 900,
+  },
+  burgerFries: {
+    src: `${base}images/dish-burger-fries.jpg`,
+    alt: 'A burger with fries in a steel cup on a timber table',
+    width: 1200,
+    height: 900,
   },
   shopfront: {
     src: `${base}images/ig-shopfront.jpg`,

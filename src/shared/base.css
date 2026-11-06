@@ -364,3 +364,45 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------- Real photos: dishes in the menu, the light room ---------- */
+
+.menu-photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.menu-photo__img,
+.room__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.menu-photo figcaption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.room__photo {
+  margin-bottom: 1rem;
+}
+
+/* Phones: the dish photos become a swipeable strip. */
+@media (max-width: 600px) {
+  .menu-photos {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+  .menu-photo {
+    scroll-snap-align: start;
+  }
+}

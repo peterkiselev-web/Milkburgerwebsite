@@ -46,6 +46,11 @@
 
   "menu": {
     "pricesConfirmed": false,
+    "photos": [
+      { "image": "mexican", "caption": "The Mexican" },
+      { "image": "camembert", "caption": "Fried Camembert" },
+      { "image": "burgerFries", "caption": "Burger & fries" }
+    ],
     "note": "Draft menu compiled from press coverage. Dish names and prices to be confirmed by the kitchen.",
     "sections": [
       {
@@ -145,7 +150,7 @@
     "designer": "Designed by David Archer, the designer behind Chiltern Firehouse and The Standard.",
     "rooms": [
       { "name": "The tiled room", "body": "Intimate and chocolate-box: burgundy tile, stainless steel, rust-red banquettes." },
-      { "name": "The light room", "body": "Airy and calm: pale blue, soft timber, white panelling." }
+      { "name": "The light room", "body": "Airy and calm: pale blue, soft timber, white panelling.", "photo": "spread" }
     ],
     "details": "The two-tone idea runs all the way down to the printed burger papers and the matchboxes."
   },

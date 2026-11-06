@@ -73,6 +73,13 @@ export function menu({ title = 'The menu' } = {}) {
       <h2 class="section__title" id="menu-title">${esc(title)}</h2>
       ${m.pricesConfirmed ? '' : `<p class="section__note">${esc(m.note)}</p>`}
     </header>
+    ${
+      m.photos
+        ? `<div class="menu-photos">${m.photos
+            .map((p) => `<figure class="menu-photo">${img(p.image, { className: 'menu-photo__img' })}<figcaption>${esc(p.caption)}</figcaption></figure>`)
+            .join('')}</div>`
+        : ''
+    }
     <div class="menu-grid">${m.sections.map(menuSection).join('')}</div>
   </section>`;
 }
@@ -106,10 +113,13 @@ export function chef() {
   const c = content.chef;
   return `
   <section class="section section--chef" id="chef" aria-labelledby="chef-title">
-    <p class="section__kicker">${esc(c.role)}</p>
-    <h2 class="section__title" id="chef-title">${esc(c.name)}</h2>
-    <div class="section__body">${paragraphs(c.bio)}</div>
-    <blockquote class="quote quote--large"><p>${esc(c.quote)}</p><cite>${esc(c.name)}</cite></blockquote>
+    <div class="section__text">
+      <p class="section__kicker">${esc(c.role)}</p>
+      <h2 class="section__title" id="chef-title">${esc(c.name)}</h2>
+      <div class="section__body">${paragraphs(c.bio)}</div>
+      <blockquote class="quote quote--large"><p>${esc(c.quote)}</p><cite>${esc(c.name)}</cite></blockquote>
+    </div>
+    <figure class="section__figure">${img('chef', { className: 'photo' })}<figcaption>${esc(c.name)} in the Milk Burger kitchen</figcaption></figure>
   </section>`;
 }
 
@@ -117,7 +127,7 @@ export function founders({ withPhoto = true } = {}) {
   const f = content.founders;
   return `
   <section class="section section--founders" id="story" aria-labelledby="founders-title">
-    ${withPhoto ? `<figure class="section__figure">${img('team', { className: 'photo' })}<figcaption>Jorge Paredes, Alina Kosichkina and Dima Zakhodiakin</figcaption></figure>` : ''}
+    ${withPhoto ? `<figure class="section__figure">${img('founders', { className: 'photo' })}<figcaption>${esc(f.names)}</figcaption></figure>` : ''}
     <div class="section__text">
       <p class="section__kicker">${esc(f.names)}</p>
       <h2 class="section__title" id="founders-title">${esc(f.headline)}</h2>
@@ -138,8 +148,8 @@ export function room() {
         .map(
           (rm, i) => `
         <article class="room room--${i === 0 ? 'tiled' : 'light'}">
-          <div class="room__swatch" aria-hidden="true"></div>
-          <h3>${esc(rm.name)}</h3>
+          ${rm.photo ? `<figure class="room__photo">${img(rm.photo, { className: 'room__img' })}</figure>` : '<div class="room__swatch" aria-hidden="true"></div>'}
+          <h3>${esc(rm.name)}${rm.photo ? '' : '<span class="needs-confirm">photo to come</span>'}</h3>
           <p>${esc(rm.body)}</p>
         </article>`,
         )

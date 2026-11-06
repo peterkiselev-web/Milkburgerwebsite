@@ -428,6 +428,7 @@ body.griddle {
 /* Photo + text */
 
 .griddle .section--founders,
+.griddle .section--chef,
 .griddle .section--history {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -435,6 +436,7 @@ body.griddle {
   align-items: center;
 }
 
+.griddle .section--chef,
 .griddle .section--history {
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
@@ -458,6 +460,7 @@ body.griddle {
 
 @media (max-width: 760px) {
   .griddle .section--founders,
+  .griddle .section--chef,
   .griddle .section--history {
     grid-template-columns: 1fr;
   }

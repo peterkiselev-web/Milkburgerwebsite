@@ -254,6 +254,7 @@ body.cream {
 /* ---------- Photo + text sections ---------- */
 
 .cream .section--founders,
+.cream .section--chef,
 .cream .section--history {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -265,6 +266,7 @@ body.cream {
   order: 2;
 }
 
+.cream .section--chef,
 .cream .section--history {
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
@@ -284,6 +286,7 @@ body.cream {
 
 @media (max-width: 760px) {
   .cream .section--founders,
+  .cream .section--chef,
   .cream .section--history {
     grid-template-columns: 1fr;
   }
