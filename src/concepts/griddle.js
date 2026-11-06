@@ -11,8 +11,7 @@ import { loadFramePlayer } from './griddle-frames.js';
 const { content, esc } = s;
 
 const STAGES = [
-  { title: 'Smash', line: 'Aged beef from Mr Txuleta, smashed hard onto hot stainless steel.' },
-  { title: 'Crust', line: 'Scraped, flipped, deep brown. “A burger doesn’t give you anywhere to hide.” Jorge Paredes' },
+  { title: 'Smash', line: 'Aged beef from Mr Txuleta, smashed onto hot stainless steel. “A burger doesn’t give you anywhere to hide.” Jorge Paredes' },
   { title: 'Melt', line: 'Cheese over the edges, straight onto the steel.' },
   { title: 'Pour', line: 'Champagne by the glass. The house pour is Billecart-Salmon.' },
   { title: 'Build', line: 'Sauces made from scratch. Thick-cut pickles. The glossy milk bun.' },
