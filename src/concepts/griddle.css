@@ -3,6 +3,13 @@
 body.griddle {
   background: #0d0a0a;
   color: #ece6da;
+  color-scheme: dark;
+  --pop-bg: #1a1515;
+  --pop-fg: #ece6da;
+  --pop-accent: var(--tan-light);
+  --solid-bg: var(--cream);
+  --solid-fg: var(--burgundy-deep);
+  --nl-bottom: 84px;
   --tan-light: #e2b07a;
   --rule: rgb(236 230 218 / 0.12);
   --logo-ink: var(--burgundy);
@@ -601,4 +608,20 @@ body.griddle {
   margin-top: 10px;
   font-size: 0.8rem;
   opacity: 0.5;
+}
+
+/* ---------- Instagram, contact ---------- */
+
+.griddle .ig-handle {
+  color: var(--tan-light);
+}
+
+.griddle .footer__newsletter {
+  max-width: 560px;
+}
+
+@media (max-width: 520px) {
+  body.griddle {
+    --nl-bottom: 76px;
+  }
 }

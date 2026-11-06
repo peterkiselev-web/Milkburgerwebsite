@@ -46,10 +46,13 @@ ${s.draftStrip('Concept: Cream')}
   ${s.history()}
   ${s.press()}
   ${s.faq()}
+  ${s.instagram()}
+  ${s.contact()}
   <div class="drips" aria-hidden="true"></div>
   ${s.visit()}
 </main>
 ${s.footer()}
+${s.newsletterPopup()}
 `;
 
 start(document.getElementById('app'), html);

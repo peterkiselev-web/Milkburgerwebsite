@@ -29,6 +29,7 @@ export function draftStrip(current) {
     <p><strong>Draft for review.</strong> Anything marked <span class="tbc">TBC</span> or <span class="needs-confirm">to confirm</span> is waiting on the restaurant.</p>
     <div class="draft-strip__actions">
       <button type="button" class="draft-strip__toggle" data-draft-toggle aria-pressed="false">Hide markers</button>
+      <button type="button" class="draft-strip__toggle" data-nl-open>Preview pop-up</button>
       <a href="../" class="draft-strip__link">All concepts</a>
       <span class="draft-strip__current">${esc(current)}</span>
     </div>
@@ -236,22 +237,98 @@ export function visit() {
         </ul>
       </div>
       <div class="visit__block">
-        <h3>Say hello</h3>
+        <h3>Follow us</h3>
         <p><a href="${esc(c.instagram.url)}" target="_blank" rel="noopener">${esc(c.instagram.handle)}</a></p>
+        <p class="muted">DM us on Instagram, or <a href="#contact">send us a message</a>.</p>
         <p><a href="tel:${esc(c.phone.value.replace(/\s/g, ''))}">${esc(c.phone.value)}</a>${toConfirm(c.phone.confirmed)}</p>
       </div>
     </div>
   </section>`;
 }
 
+export function instagram() {
+  const { contact: c, instagram: ig } = content;
+  return `
+  <section class="section section--instagram" id="instagram" aria-labelledby="instagram-title">
+    <h2 class="section__kicker" id="instagram-title">${esc(ig.headline)}</h2>
+    <a class="ig-handle" href="${esc(c.instagram.url)}" target="_blank" rel="noopener">${esc(c.instagram.handle)}</a>
+    <p class="section__lede">${esc(ig.body)}</p>
+    <a class="button button--solid" href="${esc(c.instagram.url)}" target="_blank" rel="noopener">Follow on Instagram</a>
+  </section>`;
+}
+
+// Every form on the site runs in demo mode while the site is a draft: it validates and
+// thanks the visitor but sends nothing (see wireForms in forms.js).
+const status = '<p class="form__status" role="status" aria-live="polite"></p>';
+
+export function contact() {
+  const k = content.contactForm;
+  return `
+  <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+    <h2 class="section__title" id="contact-title">${esc(k.headline)}</h2>
+    <p class="section__lede">${esc(k.body)}</p>
+    <form class="form" data-form="contact" data-thanks="${esc(k.thanks)}">
+      <div class="form__row">
+        <label class="field"><span>Name</span><input name="name" autocomplete="name" required></label>
+        <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <div class="form__row">
+        <label class="field"><span>Phone <em>optional</em></span><input type="tel" name="phone" autocomplete="tel"></label>
+        <label class="field"><span>What's it about?</span>
+          <select name="topic" required>
+            <option value="">Choose one</option>
+            ${k.topics.map((t) => `<option>${esc(t)}</option>`).join('')}
+          </select>
+        </label>
+      </div>
+      <div class="form__row">
+        <label class="field"><span>Date <em>optional</em></span><input type="date" name="date"></label>
+        <label class="field"><span>Number of guests <em>optional</em></span><input type="number" name="guests" min="1" inputmode="numeric"></label>
+      </div>
+      <label class="field"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
+      <label class="check"><input type="checkbox" name="newsletter"><span>Also send me the Milk Burger newsletter</span></label>
+      <div><button class="button button--solid" type="submit">Send message</button></div>
+      ${status}
+    </form>
+  </section>`;
+}
+
+function newsletterForm(id, { inline = false } = {}) {
+  const n = content.newsletter;
+  return `
+  <form class="nl-form${inline ? ' nl-form--inline' : ''}" data-form="newsletter" data-thanks="${esc(n.thanks)}">
+    <label class="visually-hidden" for="${id}">Email address</label>
+    <input id="${id}" type="email" name="email" placeholder="Your email" autocomplete="email" required>
+    <button class="button button--solid" type="submit">${esc(n.button)}</button>
+    <p class="nl-form__fine">${esc(n.consent)} <span class="needs-confirm">privacy policy to come</span></p>
+    ${status}
+  </form>`;
+}
+
+export function newsletterPopup() {
+  const n = content.newsletter;
+  return `
+  <aside class="nl-pop" data-newsletter-pop role="dialog" aria-labelledby="nl-pop-title" data-delay="${n.delaySeconds}" hidden>
+    <button class="nl-pop__close" type="button" data-nl-close aria-label="Close">&times;</button>
+    ${logo('nl-pop__logo')}
+    <h2 class="nl-pop__title" id="nl-pop-title">${esc(n.headline)}</h2>
+    <p class="nl-pop__body">${esc(n.body)}</p>
+    ${newsletterForm('nl-pop-email')}
+  </aside>`;
+}
+
 export function footer() {
-  const { contact: c, hours: h } = content;
+  const { contact: c, hours: h, newsletter: n } = content;
   return `
   <footer class="footer">
+    <div class="footer__newsletter">
+      <p class="footer__nl-title">${esc(n.headline)}</p>
+      ${newsletterForm('nl-footer-email', { inline: true })}
+    </div>
     ${logo('footer__logo')}
     <p>${esc(c.street)}, ${esc(c.city)} ${esc(c.postcode)}</p>
     <p>${esc(h.summary)}. Walk-ins only.</p>
-    <p><a href="${esc(c.instagram.url)}" target="_blank" rel="noopener">${esc(c.instagram.handle)}</a></p>
+    <p><a href="${esc(c.instagram.url)}" target="_blank" rel="noopener">Follow ${esc(c.instagram.handle)} on Instagram</a></p>
     <p class="footer__small">&copy; ${new Date().getFullYear()} Milk Burger</p>
   </footer>`;
 }

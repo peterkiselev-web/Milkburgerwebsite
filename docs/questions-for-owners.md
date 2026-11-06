@@ -24,3 +24,7 @@ Everything the draft site can't answer from public sources. Anything marked TBC 
 17. Gift cards, merch (the matchboxes?), newsletter sign-up?
 18. Are they happy to name suppliers (Mr Txuleta, Billecart-Salmon) on the site?
 19. Footage: could the kitchen shoot three reference photos for the scroll film? Raw beef on their griddle, their smash press, their buns.
+20. Newsletter: do they want one? Which tool (Mailchimp, Klaviyo or similar), who writes it, and how often?
+21. Contact form: which email address should enquiries go to? Do they take private hire and large groups at all?
+22. Privacy policy: needed before any form collects real emails (UK GDPR).
+23. Fonts: the files or names of the fonts used on their printed menus, so the website body text can match.

@@ -178,7 +178,28 @@
     { "q": "Can I bring the kids?", "a": "Yes, children are welcome.", "confirmed": false },
     { "q": "What's there for vegetarians?", "a": "Fried camembert, vegetable tempura, fries and every dessert. Ask about a vegetarian burger.", "confirmed": false },
     { "q": "I have an allergy. Can you help?", "a": "Every sauce is made in our kitchen, so the team can tell you exactly what's in each dish. Please tell your server before you order.", "confirmed": false },
-    { "q": "Can I hire the restaurant for a party?", "a": "Get in touch through Instagram and we'll see what we can do.", "confirmed": false },
+    { "q": "Can I hire the restaurant for a party?", "a": "Send us a message with the form below and we'll see what we can do.", "confirmed": false },
     { "q": "Do you deliver?", "a": "To be confirmed.", "confirmed": false }
-  ]
+  ],
+
+  "instagram": {
+    "headline": "Follow us on Instagram",
+    "body": "New dishes, the latest offers and what's happening on Westbourne Grove. DM us any time."
+  },
+
+  "newsletter": {
+    "headline": "Be first to know",
+    "body": "New dishes, offers and news from Westbourne Grove, straight to your inbox. Unsubscribe any time.",
+    "button": "Sign me up",
+    "consent": "By signing up you agree to get emails from Milk Burger. We'll never share your address.",
+    "thanks": "You're on the list.",
+    "delaySeconds": 10
+  },
+
+  "contactForm": {
+    "headline": "Get in touch",
+    "body": "Private hire, a big group, press, or anything else. There's no need to message us for a table: we're walk-ins only, so just come in.",
+    "topics": ["Private hire & events", "Large group", "Press", "Something else"],
+    "thanks": "Thanks for your message. We'll get back to you soon."
+  }
 }

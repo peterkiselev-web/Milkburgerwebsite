@@ -77,9 +77,12 @@ ${s.draftStrip('Concept: The Griddle')}
   ${s.history()}
   ${s.press()}
   ${s.faq()}
+  ${s.instagram()}
+  ${s.contact()}
   ${s.visit()}
 </main>
 ${s.footer()}
+${s.newsletterPopup()}
 
 <a class="walk-in" href="#visit">
   ${s.statusPill('walk-in__status')}

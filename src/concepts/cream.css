@@ -3,6 +3,9 @@
 body.cream {
   background: var(--cream);
   color: var(--ink);
+  --pop-bg: var(--paper);
+  --pop-fg: var(--ink);
+  --pop-accent: var(--burgundy);
   --logo-ink: var(--burgundy);
   --logo-fill: var(--paper);
 }
@@ -472,4 +475,20 @@ body.cream {
   margin-top: 10px;
   font-size: 0.8rem;
   opacity: 0.6;
+}
+
+/* ---------- Instagram, contact ---------- */
+
+.cream .ig-handle {
+  color: var(--burgundy);
+}
+
+.cream .section--visit .button--solid,
+.cream .footer .button--solid {
+  --solid-bg: var(--cream);
+  --solid-fg: var(--burgundy);
+}
+
+.cream .footer__newsletter {
+  max-width: 560px;
 }

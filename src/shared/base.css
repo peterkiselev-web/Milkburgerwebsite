@@ -406,3 +406,241 @@ button {
     scroll-snap-align: start;
   }
 }
+
+/* ---------- Instagram ---------- */
+
+.section--instagram {
+  text-align: center;
+}
+
+.section--instagram .section__lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ig-handle {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 7vw, 4.6rem);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.ig-handle:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.section--instagram .button {
+  margin-top: 24px;
+}
+
+/* ---------- Buttons and forms ---------- */
+
+.button--solid {
+  background: var(--solid-bg, var(--burgundy));
+  border-color: var(--solid-bg, var(--burgundy));
+  color: var(--solid-fg, var(--cream));
+}
+
+.button--solid:hover {
+  filter: brightness(1.1);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+  margin-top: 36px;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.field em {
+  font-style: normal;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.field input,
+.field select,
+.field textarea,
+.nl-form input {
+  width: 100%;
+  padding: 0.75em 0.9em;
+  border: 1.5px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, currentColor 4%, transparent);
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.field select option {
+  color: #1b1515;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible,
+.nl-form input:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+
+.check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--solid-bg, var(--burgundy));
+}
+
+.form .button {
+  margin-top: 4px;
+}
+
+.form__status:not(:empty) {
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Newsletter ---------- */
+
+.nl-form {
+  display: grid;
+  gap: 10px;
+}
+
+.nl-form .button {
+  justify-content: center;
+  margin-top: 0;
+}
+
+.nl-form__fine {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.nl-form--inline {
+  grid-template-columns: 1fr auto;
+  max-width: 460px;
+  margin: 12px auto 0;
+}
+
+.nl-form--inline .nl-form__fine,
+.nl-form--inline .form__status {
+  grid-column: 1 / -1;
+}
+
+.footer__newsletter {
+  width: 100%;
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.footer__nl-title {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+}
+
+/* The slide-in: never blocks the page, one tap to close. */
+.nl-pop {
+  position: fixed;
+  z-index: 60;
+  right: 20px;
+  bottom: var(--nl-bottom, 20px);
+  width: min(380px, calc(100vw - 32px));
+  padding: 24px 24px 20px;
+  border: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  border-radius: 20px;
+  background: var(--pop-bg, var(--paper));
+  color: var(--pop-fg, var(--ink));
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.28);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.nl-pop[hidden] {
+  display: none;
+}
+
+.nl-pop.is-open {
+  opacity: 1;
+  transform: none;
+}
+
+.nl-pop__close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.nl-pop__logo {
+  width: 150px;
+}
+
+.nl-pop__title {
+  margin-top: 14px;
+  color: var(--pop-accent, var(--burgundy));
+  font-family: var(--serif);
+  font-size: 2rem;
+}
+
+.nl-pop__body {
+  margin: 6px 0 16px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 520px) {
+  .nl-pop {
+    left: 12px;
+    right: 12px;
+    width: auto;
+  }
+  .nl-pop__logo {
+    display: none;
+  }
+}

@@ -44,3 +44,8 @@ npm run build    # static site in dist/
 
 ## Photos
 Each photo tries its local file in `public/images/` first, then a hosted copy, then a placeholder. To use a full-resolution original, save it under the filename listed in `src/shared/images.js`. For example, the burgers and Champagne shot goes in `public/images/burgers-champagne.jpg`.
+
+## Forms (contact and newsletter)
+Both drafts have a contact form, a newsletter sign-up in the footer and a newsletter slide-in that appears after 10 seconds (`newsletter.delaySeconds` in the content file). While `"draft": true`, the forms check the fields and thank the visitor but **send nothing**. The draft strip's "Preview pop-up" button shows the slide-in on demand.
+
+To go live, the owners need a mailing tool (for example Mailchimp or Klaviyo), an inbox for enquiries and a privacy policy. Then replace `send()` in `src/shared/forms.js` with calls to those services and set `"draft": false`.
