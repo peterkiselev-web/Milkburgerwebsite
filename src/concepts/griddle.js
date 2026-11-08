@@ -28,7 +28,7 @@ const captions = STAGES.map(
 
 const html = `
 ${s.draftStrip('Concept: The Griddle')}
-${s.siteHeader()}
+${s.siteMenu()}
 
 <main id="top">
   <section class="film" aria-label="How a Milk Burger is made" style="--stages: ${STAGES.length + 1}">
@@ -76,11 +76,6 @@ ${s.siteHeader()}
 </main>
 ${s.footer()}
 ${s.newsletterPopup()}
-
-<a class="walk-in" href="#visit">
-  ${s.statusPill('walk-in__status')}
-  <span class="walk-in__where"><span class="walk-in__addr">50 Westbourne Grove · </span>Walk in</span>
-</a>
 `;
 
 start(document.getElementById('app'), html);

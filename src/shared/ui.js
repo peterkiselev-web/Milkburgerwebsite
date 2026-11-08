@@ -23,23 +23,66 @@ export function wireRails(root = document) {
   });
 }
 
-// Highlights the section you're reading in the header, and on phones keeps that chip in view.
-export function wireNav(root = document) {
-  const nav = root.querySelector('[data-site-nav]');
-  if (!nav) return;
-  const links = [...root.querySelectorAll('[data-nav]')];
+// The floating menu button: opens the panel of sections, closes on a link, a tap outside
+// or Escape, and marks the section you're reading.
+export function wireMenu(root = document) {
+  const button = root.querySelector('[data-menu-button]');
+  const panel = root.querySelector('[data-menu]');
+  const backdrop = root.querySelector('[data-menu-backdrop]');
+  if (!button || !panel) return;
+  const links = [...panel.querySelectorAll('[data-nav]')];
   const byId = new Map(links.map((a) => [a.dataset.nav, a]));
   const sections = [...byId.keys()].map((id) => root.querySelector(`#${id}`)).filter(Boolean);
+  const isOpen = () => button.getAttribute('aria-expanded') === 'true';
+  let hideTimer = 0;
+
+  const setOpen = (open) => {
+    button.setAttribute('aria-expanded', String(open));
+    button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    clearTimeout(hideTimer);
+    if (open) {
+      panel.hidden = false;
+      backdrop.hidden = false;
+      requestAnimationFrame(() => {
+        panel.classList.add('is-open');
+        backdrop.classList.add('is-open');
+      });
+      (panel.querySelector('[aria-current]') || links[0]).focus({ preventScroll: true });
+    } else {
+      panel.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      hideTimer = setTimeout(() => {
+        panel.hidden = true;
+        backdrop.hidden = true;
+      }, 260);
+    }
+  };
+
+  button.addEventListener('click', () => setOpen(!isOpen()));
+  backdrop.addEventListener('click', () => setOpen(false));
+  panel.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!isOpen()) return;
+    if (e.key === 'Escape') {
+      setOpen(false);
+      button.focus();
+    } else if (e.key === 'Tab') {
+      // Keep keyboard focus between the button and the panel while it's open.
+      const items = [button, ...panel.querySelectorAll('a[href]')];
+      const i = items.indexOf(document.activeElement);
+      const next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : i === items.length - 1 ? 0 : i + 1;
+      e.preventDefault();
+      items[i === -1 ? 0 : next].focus();
+    }
+  });
 
   let current = null;
   const setCurrent = (id) => {
     if (id === current) return;
     current = id;
     links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.nav === id));
-    const chip = byId.get(id);
-    if (chip && nav.contains(chip) && nav.scrollWidth > nav.clientWidth) {
-      nav.scrollTo({ left: chip.offsetLeft - (nav.clientWidth - chip.clientWidth) / 2, behavior: 'smooth' });
-    }
   };
 
   // A section counts as current once it crosses the upper third of the screen.

@@ -34,34 +34,43 @@ export function rail(items, { label, className = '' } = {}) {
   </div>`;
 }
 
-// One header for every draft: logo, the main sections, and a "Visit" button that always
-// shows whether they're open. On phones the sections become a swipeable row of chips.
+// Navigation for every draft: one round button floating at the bottom centre of the screen.
+// It opens a panel with the sections, whether they're open right now, and directions.
 export const navLinks = [
   ['menu', 'Menu'],
   ['chef', 'Story'],
   ['room', 'Rooms'],
   ['press', 'Press'],
+  ['faq', 'FAQ'],
   ['contact', 'Contact'],
+  ['visit', 'Visit'],
 ];
 
-export function siteHeader() {
+export function siteMenu() {
+  const { contact } = content;
   return `
-  <header class="site-header" data-site-header>
-    <a href="#top" class="site-header__logo" aria-label="Milk Burger, back to top">${logo()}</a>
-    <nav class="site-nav" aria-label="Sections" data-site-nav>
-      ${navLinks.map(([id, text]) => `<a href="#${id}" data-nav="${id}">${esc(text)}</a>`).join('')}
-    </nav>
-    <a class="site-header__cta" href="#visit" data-nav="visit" data-open-status>
-      <span class="status__dot" aria-hidden="true"></span>
-      <span>Visit</span>
-    </a>
-  </header>`;
+  <button type="button" class="menu-button" data-menu-button aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+    <span class="menu-button__lines" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="menu-backdrop" data-menu-backdrop hidden></div>
+  <nav class="site-menu" id="site-menu" aria-label="Sections" data-menu hidden>
+    <a href="#top" class="site-menu__logo" aria-label="Milk Burger, back to top">${logo()}</a>
+    ${statusPill('site-menu__status')}
+    <ul class="site-menu__links">
+      ${navLinks.map(([id, text]) => `<li><a href="#${id}" data-nav="${id}">${esc(text)}</a></li>`).join('')}
+    </ul>
+    <p class="site-menu__meta">
+      <span>${esc(contact.street)} · ${esc(content.walkIn.headline)}</span>
+      <a href="${esc(contact.mapsUrl)}" target="_blank" rel="noopener">Directions</a>
+      <a href="${esc(contact.instagram.url)}" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </nav>`;
 }
 
 export function draftStrip(current) {
   return `
   <div class="draft-strip" role="note">
-    <p><strong>Draft for review.</strong> Anything marked <span class="tbc">TBC</span> or <span class="needs-confirm">to confirm</span> is waiting on the restaurant.</p>
+    <p><strong>Draft<span class="draft-strip__more"> for review.</span></strong><span class="draft-strip__more"> Anything marked <span class="tbc">TBC</span> or <span class="needs-confirm">to confirm</span> is waiting on the restaurant.</span></p>
     <div class="draft-strip__actions">
       <button type="button" class="draft-strip__toggle" data-draft-toggle aria-pressed="false">Hide markers</button>
       <button type="button" class="draft-strip__toggle" data-nl-open>Preview pop-up</button>
@@ -165,7 +174,7 @@ export function chef() {
   <section class="section section--chef" id="chef" aria-labelledby="chef-title">
     <div class="section__text">
       <p class="section__kicker">${esc(c.role)}</p>
-      <h2 class="section__title" id="chef-title">${esc(c.name)}</h2>
+      <h2 class="section__title section__title--name" id="chef-title">${esc(c.name)}</h2>
       <div class="section__body">${paragraphs(c.bio)}</div>
       <blockquote class="quote quote--large"><p>${esc(c.quote)}</p><cite>${esc(c.name)}</cite></blockquote>
     </div>

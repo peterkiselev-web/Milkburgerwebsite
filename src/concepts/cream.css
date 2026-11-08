@@ -6,13 +6,8 @@ body.cream {
   --pop-bg: var(--paper);
   --pop-fg: var(--ink);
   --pop-accent: var(--burgundy);
-  --header-bg: rgb(244 239 225 / 0.9);
-  --header-fg: var(--ink);
-  --header-line: rgb(90 22 32 / 0.14);
-  --chip-bg: rgb(90 22 32 / 0.07);
-  --chip-hover: rgb(90 22 32 / 0.08);
-  --chip-active-bg: var(--burgundy);
-  --chip-active-fg: var(--cream);
+  --menu-bg: var(--burgundy);
+  --menu-fg: var(--cream);
   --accent: var(--burgundy);
   --chev-fg: var(--cream);
   --logo-ink: var(--burgundy);
@@ -88,6 +83,13 @@ body.cream {
   line-height: 1.05;
   color: var(--burgundy);
   font-weight: 800;
+}
+
+/* People's names stay in the plain typeface. */
+.cream .section__title--name {
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .cream .section__kicker {
@@ -394,7 +396,7 @@ body.cream {
   display: grid;
   justify-items: center;
   gap: 6px;
-  padding: 56px var(--gutter) 64px;
+  padding: 56px var(--gutter) 112px;
   background: var(--burgundy-deep);
   color: var(--cream);
   text-align: center;

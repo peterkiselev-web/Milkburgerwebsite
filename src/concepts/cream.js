@@ -10,7 +10,7 @@ const { content, esc } = s;
 
 const html = `
 ${s.draftStrip('Concept: Cream')}
-${s.siteHeader()}
+${s.siteMenu()}
 
 <main id="top">
   <section class="hero">

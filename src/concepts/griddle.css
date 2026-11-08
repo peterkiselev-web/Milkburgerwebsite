@@ -9,13 +9,8 @@ body.griddle {
   --pop-accent: var(--tan-light);
   --solid-bg: var(--cream);
   --solid-fg: var(--burgundy-deep);
-  --nl-bottom: 84px;
-  --header-bg: rgb(13 10 10 / 0.86);
-  --header-fg: #ece6da;
-  --chip-bg: rgb(255 255 255 / 0.08);
-  --chip-hover: rgb(255 255 255 / 0.1);
-  --chip-active-bg: var(--cream);
-  --chip-active-fg: var(--burgundy-deep);
+  --menu-bg: var(--cream);
+  --menu-fg: var(--burgundy-deep);
   --accent: var(--tan-light);
   --chev-fg: #1a1414;
   --tan-light: #e2b07a;
@@ -98,7 +93,7 @@ body.griddle {
   position: absolute;
   left: var(--gutter);
   right: var(--gutter);
-  bottom: clamp(76px, 13vh, 130px);
+  bottom: clamp(100px, 14vh, 140px);
   max-width: 560px;
 }
 
@@ -153,7 +148,7 @@ body.griddle {
 
 .film__badge {
   position: absolute;
-  top: calc(var(--header-h) + 10px);
+  top: 14px;
   right: var(--gutter);
   padding: 4px 10px;
   border-radius: 999px;
@@ -197,50 +192,6 @@ body.griddle {
 
 .film-static .film__intro {
   display: none;
-}
-
-/* ---------- Floating walk-in pill ---------- */
-
-.walk-in {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  border: 1px solid rgb(255 255 255 / 0.16);
-  border-radius: 999px;
-  background: rgb(20 16 16 / 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font-size: 0.85rem;
-  text-decoration: none;
-}
-
-.walk-in__status {
-  font-size: 0.85rem;
-}
-
-.walk-in__where {
-  opacity: 0.75;
-}
-
-.walk-in {
-  white-space: nowrap;
-}
-
-@media (max-width: 520px) {
-  .walk-in__addr {
-    display: none;
-  }
-  .walk-in {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    justify-content: space-between;
-  }
 }
 
 /* ---------- Sections ---------- */
@@ -554,12 +505,6 @@ body.griddle {
   max-width: 560px;
 }
 
-@media (max-width: 520px) {
-  body.griddle {
-    --nl-bottom: 76px;
-  }
-}
-
 /* ---------- Logo lettering on the dark theme ----------
    Burgundy outline as on the logo; the letter body is cream, or tan where the
    old headings were tan. */
@@ -587,7 +532,20 @@ body.griddle {
   font-palette: --mb-cream;
 }
 
-/* The header floats over the film rather than pushing it down. */
-.griddle .site-header {
-  margin-bottom: calc(-1 * var(--header-h));
+/* People's names stay in the plain typeface. */
+.griddle .section__title--name {
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Menu panel: logo-style links, burgundy outline with a cream body. */
+.griddle .site-menu__links a {
+  color: var(--burgundy);
+  font-palette: --mb-cream;
+}
+
+.griddle .site-menu__links a[aria-current]::after {
+  background: var(--tan-light);
 }
