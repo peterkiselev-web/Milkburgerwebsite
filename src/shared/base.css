@@ -1,5 +1,32 @@
 /* Shared foundation: palette, type, resets and the parts every concept uses. */
 
+/* Milk Burger display face, built from the logo's own letters (see scripts/font).
+   It is a two-colour font: the outline follows `color`, the letter body comes from
+   the font palette (cream by default; swap it with `font-palette`). Lowercase sets
+   as small capitals, like the logo's all-caps lettering. */
+@font-face {
+  font-family: 'Milk Burger';
+  src: url('../brand/fonts/milk-burger.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-palette-values --mb-cream {
+  font-family: 'Milk Burger';
+  override-colors: 0 #f4efe1;
+}
+
+@font-palette-values --mb-tan {
+  font-family: 'Milk Burger';
+  override-colors: 0 #e2b07a;
+}
+
+@font-palette-values --mb-blue {
+  font-family: 'Milk Burger';
+  override-colors: 0 #cddbe4;
+}
+
 :root {
   --cream: #f4efe1;
   --paper: #fffdf6;
@@ -17,7 +44,7 @@
   --closing: #d9902b;
   --closed: #b33a3a;
 
-  --display: 'Gluten', 'Sniglet', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  --display: 'Milk Burger', 'Arial Rounded MT Bold', system-ui, sans-serif;
   --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --gutter: clamp(16px, 4vw, 56px);
   --radius: 14px;
@@ -61,6 +88,7 @@ h4 {
   margin: 0;
   font-weight: 800;
   line-height: 1.1;
+  font-synthesis: none;
 }
 
 p,

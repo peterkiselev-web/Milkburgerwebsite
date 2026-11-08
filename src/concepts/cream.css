@@ -40,9 +40,7 @@ body.cream {
   font-family: var(--display);
   font-size: clamp(2rem, 5.4vw, 3.6rem);
   line-height: 1.05;
-  color: var(--paper);
-  -webkit-text-stroke: 0.075em var(--burgundy);
-  paint-order: stroke fill;
+  color: var(--burgundy);
   font-weight: 800;
 }
 
@@ -88,9 +86,7 @@ body.cream {
   font-family: var(--display);
   font-size: clamp(2.2rem, 5.6vw, 3.9rem);
   line-height: 1.05;
-  color: var(--paper);
-  -webkit-text-stroke: 0.07em var(--burgundy);
-  paint-order: stroke fill;
+  color: var(--burgundy);
   font-weight: 800;
 }
 
@@ -265,6 +261,11 @@ body.cream {
   color: var(--cream);
 }
 
+.cream .teams__side--smash h3 {
+  color: var(--burgundy-deep);
+  font-palette: --mb-cream;
+}
+
 .cream .teams__side--juicy {
   background: var(--pale-blue);
   color: var(--burgundy);
@@ -352,9 +353,15 @@ body.cream {
   margin-right: auto;
 }
 
-.cream .section--visit .section__title {
-  color: var(--cream);
-  -webkit-text-stroke-color: var(--burgundy-deep);
+.cream .section--visit .section__title,
+.cream .visit h3 {
+  color: var(--burgundy-deep);
+  font-palette: --mb-cream;
+}
+
+.cream .footer__nl-title {
+  color: var(--burgundy);
+  font-palette: --mb-cream;
 }
 
 .cream .status--large {

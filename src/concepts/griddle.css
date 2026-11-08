@@ -67,9 +67,6 @@ body.griddle {
 .film__tagline {
   font-family: var(--display);
   font-size: clamp(1.6rem, 4vw, 2.8rem);
-  color: var(--cream);
-  -webkit-text-stroke: 0.07em var(--burgundy);
-  paint-order: stroke fill;
   font-weight: 800;
   text-shadow: 0 2px 24px rgb(0 0 0 / 0.7);
 }
@@ -273,9 +270,6 @@ body.griddle {
   font-family: var(--display);
   font-size: clamp(2.3rem, 6vw, 4.2rem);
   line-height: 1.05;
-  color: var(--cream);
-  -webkit-text-stroke: 0.07em var(--burgundy);
-  paint-order: stroke fill;
   font-weight: 800;
 }
 
@@ -564,6 +558,33 @@ body.griddle {
   body.griddle {
     --nl-bottom: 76px;
   }
+}
+
+/* ---------- Logo lettering on the dark theme ----------
+   Burgundy outline as on the logo; the letter body is cream, or tan where the
+   old headings were tan. */
+
+.griddle .film__tagline,
+.griddle .caption h2,
+.griddle .section__title,
+.griddle .room h3,
+.griddle .footer__nl-title {
+  color: var(--burgundy);
+  font-palette: --mb-cream;
+}
+
+.griddle .kitchen__point h3,
+.griddle .visit h3,
+.griddle .ig-handle,
+.griddle .menu-section__title,
+.griddle .nl-pop__title {
+  color: var(--burgundy);
+  font-palette: --mb-tan;
+}
+
+.griddle .teams__side--smash h3 {
+  color: var(--burgundy-deep);
+  font-palette: --mb-cream;
 }
 
 /* The header floats over the film rather than pushing it down. */
