@@ -28,7 +28,7 @@ body.picker {
   max-width: 16ch;
   margin-top: 12px;
   color: var(--burgundy);
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2.6rem, 7vw, 5rem);
   line-height: 0.95;
 }
@@ -74,7 +74,7 @@ body.picker {
 .concept h2 {
   margin-top: auto;
   padding-top: 40px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 2.6rem;
 }
 

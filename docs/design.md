@@ -23,7 +23,7 @@ Both include, from one content file: menu, kitchen philosophy, chef, founders, s
 - **Content:** `src/content/restaurant.json` holds every fact and line of copy. Change it once and both concepts update. Prices are `null` until confirmed and show as TBC.
 - **Draft markers:** `TBC` for missing prices, `to confirm` for facts from a single source. A toggle in the draft strip hides them for a clean preview.
 - **Open now:** calculated in London time, whatever timezone the visitor is in. `hours.overrides` handles one-off closures, e.g. `{ "date": "2026-12-25", "closed": true, "note": "Christmas Day" }`.
-- **Brand:** colours taken from the restaurant's own material: burgundy and cream from the logo, black awning, rust banquettes, stainless steel, pale blue and timber from the rooms. Instrument Serif and Instrument Sans throughout. The logo is the only hand-drawn element.
+- **Brand:** colours taken from the restaurant's own material: burgundy and cream from the logo, black awning, rust banquettes, stainless steel, pale blue and timber from the rooms. Headings use Gluten, a free hand-drawn display font standing in for the logo's lettering (styled with the logo's cream fill and burgundy outline) until the owners share the fonts from their printed menus. Body text is Instrument Sans. No serif anywhere.
 - **Logo:** a placeholder traced from the Instagram profile picture. Replace `src/brand/logo-placeholder.svg` with the original vector file. Its two layers (`--logo-ink` and `--logo-fill`) let each concept recolour it.
 - **Images:** each photo tries its local file, then a hosted fallback, then a styled placeholder. A missing file never shows a broken image.
 

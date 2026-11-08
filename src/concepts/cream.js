@@ -10,14 +10,7 @@ const { content, esc } = s;
 
 const html = `
 ${s.draftStrip('Concept: Cream')}
-<header class="topbar">
-  <a href="#top" class="topbar__logo" aria-label="Milk Burger, back to top">${s.logo()}</a>
-  <nav class="topbar__nav" aria-label="Sections">
-    <a href="#menu">Menu</a>
-    <a href="#story">Story</a>
-    <a href="#visit">Visit</a>
-  </nav>
-</header>
+${s.siteHeader()}
 
 <main id="top">
   <section class="hero">
@@ -29,11 +22,12 @@ ${s.draftStrip('Concept: Cream')}
       ${s.statusPill()}
       <span class="chip">Walk-ins only</span>
     </div>
-    <div class="grid3">
-      ${img('shopfront', { className: 'tile', loading: 'eager' })}
-      ${img('burger', { className: 'tile', loading: 'eager' })}
-      ${img('team', { className: 'tile', loading: 'eager' })}
-    </div>
+    ${s.rail(
+      ['shopfront', 'burger', 'team', 'spread', 'mexican', 'chef', 'camembert']
+        .map((key, i) => img(key, { className: 'tile', loading: i < 3 ? 'eager' : 'lazy' }))
+        .join(''),
+      { label: 'Photos from Milk Burger', className: 'rail--gallery' },
+    )}
     <p class="hero__intro">${esc(content.intro)}</p>
   </section>
 

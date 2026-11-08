@@ -49,7 +49,9 @@
     "photos": [
       { "image": "mexican", "caption": "The Mexican" },
       { "image": "camembert", "caption": "Fried Camembert" },
-      { "image": "burgerFries", "caption": "Burger & fries" }
+      { "image": "burgerFries", "caption": "Burger & fries" },
+      { "image": "burger", "caption": "Melted cheese, pickles, glossy milk bun" },
+      { "image": "spread", "caption": "Two burgers, fries and a glass of something" }
     ],
     "note": "Draft menu compiled from press coverage. Dish names and prices to be confirmed by the kitchen.",
     "sections": [

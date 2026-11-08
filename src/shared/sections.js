@@ -23,6 +23,41 @@ const teamName = { smash: 'Team Smash', juicy: 'Team Juicy' };
 
 export const logo = (className = '') => `<span class="logo ${className}">${logoSvg}</span>`;
 
+export function rail(items, { label, className = '' } = {}) {
+  return `
+  <div class="rail ${className}" data-rail>
+    <div class="rail__track" tabindex="0" role="region" aria-label="${esc(label)}">${items}</div>
+    <div class="rail__nav">
+      <button type="button" class="rail__btn" data-rail-prev aria-label="Scroll back">&larr;</button>
+      <button type="button" class="rail__btn" data-rail-next aria-label="Scroll forward">&rarr;</button>
+    </div>
+  </div>`;
+}
+
+// One header for every draft: logo, the main sections, and a "Visit" button that always
+// shows whether they're open. On phones the sections become a swipeable row of chips.
+export const navLinks = [
+  ['menu', 'Menu'],
+  ['chef', 'Story'],
+  ['room', 'Rooms'],
+  ['press', 'Press'],
+  ['contact', 'Contact'],
+];
+
+export function siteHeader() {
+  return `
+  <header class="site-header" data-site-header>
+    <a href="#top" class="site-header__logo" aria-label="Milk Burger, back to top">${logo()}</a>
+    <nav class="site-nav" aria-label="Sections" data-site-nav>
+      ${navLinks.map(([id, text]) => `<a href="#${id}" data-nav="${id}">${esc(text)}</a>`).join('')}
+    </nav>
+    <a class="site-header__cta" href="#visit" data-nav="visit" data-open-status>
+      <span class="status__dot" aria-hidden="true"></span>
+      <span>Visit</span>
+    </a>
+  </header>`;
+}
+
 export function draftStrip(current) {
   return `
   <div class="draft-strip" role="note">
@@ -59,11 +94,20 @@ export function menuItem(item) {
 }
 
 export function menuSection(section) {
+  const names = section.items.map((i) => i.name);
+  const peek = names.length > 3 ? `${names.slice(0, 3).join(', ')} and more` : names.join(', ');
   return `
-  <div class="menu-section" id="menu-${section.id}">
-    <h3 class="menu-section__title">${esc(section.title)}</h3>
+  <details class="menu-section" id="menu-${section.id}">
+    <summary class="menu-section__summary">
+      <span class="menu-section__heading">
+        <h3 class="menu-section__title">${esc(section.title)}</h3>
+        <span class="menu-section__peek">${esc(peek)}</span>
+      </span>
+      <span class="menu-section__count">${names.length}</span>
+      <span class="menu-section__chev" aria-hidden="true"></span>
+    </summary>
     <ul class="menu-section__items">${section.items.map(menuItem).join('')}</ul>
-  </div>`;
+  </details>`;
 }
 
 export function menu({ title = 'The menu' } = {}) {
@@ -76,11 +120,15 @@ export function menu({ title = 'The menu' } = {}) {
     </header>
     ${
       m.photos
-        ? `<div class="menu-photos">${m.photos
-            .map((p) => `<figure class="menu-photo">${img(p.image, { className: 'menu-photo__img' })}<figcaption>${esc(p.caption)}</figcaption></figure>`)
-            .join('')}</div>`
+        ? rail(
+            m.photos
+              .map((p) => `<figure class="menu-photo">${img(p.image, { className: 'menu-photo__img' })}<figcaption>${esc(p.caption)}</figcaption></figure>`)
+              .join(''),
+            { label: 'Dishes from the menu', className: 'rail--photos' },
+          )
         : ''
     }
+    <p class="menu-hint">Tap a section to open it.</p>
     <div class="menu-grid">${m.sections.map(menuSection).join('')}</div>
   </section>`;
 }
@@ -104,9 +152,10 @@ export function kitchen() {
   return `
   <section class="section section--kitchen" id="kitchen" aria-labelledby="kitchen-title">
     <h2 class="section__title" id="kitchen-title">${esc(k.headline)}</h2>
-    <ul class="kitchen">
-      ${k.points.map((p) => `<li class="kitchen__point"><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></li>`).join('')}
-    </ul>
+    ${rail(k.points.map((p) => `<article class="kitchen__point"><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></article>`).join(''), {
+      label: 'How the kitchen works',
+      className: 'rail--kitchen',
+    })}
   </section>`;
 }
 
@@ -144,8 +193,8 @@ export function room() {
   <section class="section section--room" id="room" aria-labelledby="room-title">
     <h2 class="section__title" id="room-title">${esc(r.headline)}</h2>
     <p class="section__lede">${esc(r.designer)}</p>
-    <div class="rooms">
-      ${r.rooms
+    ${rail(
+      r.rooms
         .map(
           (rm, i) => `
         <article class="room room--${i === 0 ? 'tiled' : 'light'}">
@@ -154,8 +203,9 @@ export function room() {
           <p>${esc(rm.body)}</p>
         </article>`,
         )
-        .join('')}
-    </div>
+        .join(''),
+      { label: 'The two rooms', className: 'rail--rooms' },
+    )}
     <p class="section__note">${esc(r.details)}</p>
   </section>`;
 }
@@ -177,17 +227,18 @@ export function press({ title = 'What they said' } = {}) {
   return `
   <section class="section section--press" id="press" aria-labelledby="press-title">
     <h2 class="section__title" id="press-title">${esc(title)}</h2>
-    <ul class="press">
-      ${content.press
+    ${rail(
+      content.press
         .map(
           (p) => `
-        <li class="press__item">
+        <figure class="press__item">
           <blockquote><p>${esc(p.quote)}</p></blockquote>
-          <a class="press__outlet" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.outlet)}</a>
-        </li>`,
+          <figcaption><a class="press__outlet" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.outlet)}</a></figcaption>
+        </figure>`,
         )
-        .join('')}
-    </ul>
+        .join(''),
+      { label: 'Press quotes', className: 'rail--press' },
+    )}
   </section>`;
 }
 

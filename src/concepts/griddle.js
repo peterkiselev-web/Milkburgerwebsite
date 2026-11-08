@@ -28,14 +28,7 @@ const captions = STAGES.map(
 
 const html = `
 ${s.draftStrip('Concept: The Griddle')}
-<header class="g-bar">
-  <a href="#top" class="g-bar__logo" aria-label="Milk Burger, back to top">${s.logo()}</a>
-  <nav class="g-bar__nav" aria-label="Sections">
-    <a href="#menu">Menu</a>
-    <a href="#story">Story</a>
-    <a href="#visit">Visit</a>
-  </nav>
-</header>
+${s.siteHeader()}
 
 <main id="top">
   <section class="film" aria-label="How a Milk Burger is made" style="--stages: ${STAGES.length + 1}">

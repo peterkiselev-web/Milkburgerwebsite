@@ -4,6 +4,7 @@ import { content } from './sections.js';
 import { mountStatus } from './hours.js';
 import { wireImageFallbacks } from './images.js';
 import { wireForms, mountNewsletterPopup } from './forms.js';
+import { wireRails, wireNav } from './ui.js';
 
 const STORAGE_KEY = 'mb-hide-draft';
 
@@ -44,4 +45,6 @@ export function start(mount, html) {
   mountStatus(content.hours);
   wireForms(mount);
   mountNewsletterPopup();
+  wireRails(mount);
+  wireNav(document);
 }

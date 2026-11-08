@@ -10,6 +10,14 @@ body.griddle {
   --solid-bg: var(--cream);
   --solid-fg: var(--burgundy-deep);
   --nl-bottom: 84px;
+  --header-bg: rgb(13 10 10 / 0.86);
+  --header-fg: #ece6da;
+  --chip-bg: rgb(255 255 255 / 0.08);
+  --chip-hover: rgb(255 255 255 / 0.1);
+  --chip-active-bg: var(--cream);
+  --chip-active-fg: var(--burgundy-deep);
+  --accent: var(--tan-light);
+  --chev-fg: #1a1414;
   --tan-light: #e2b07a;
   --rule: rgb(236 230 218 / 0.12);
   --logo-ink: var(--burgundy);
@@ -17,39 +25,6 @@ body.griddle {
 }
 
 /* ---------- Bar ---------- */
-
-.g-bar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  height: 60px;
-  padding: 0 var(--gutter);
-  margin-bottom: -60px;
-  background: linear-gradient(rgb(13 10 10 / 0.85), rgb(13 10 10 / 0));
-}
-
-.g-bar__logo {
-  width: clamp(110px, 14vw, 150px);
-}
-
-.g-bar__nav {
-  display: flex;
-  gap: clamp(16px, 3vw, 32px);
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-.g-bar__nav a {
-  text-decoration: none;
-}
-
-.g-bar__nav a:hover {
-  color: var(--tan-light);
-}
 
 /* ---------- Film ---------- */
 
@@ -90,9 +65,12 @@ body.griddle {
 }
 
 .film__tagline {
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--display);
   font-size: clamp(1.6rem, 4vw, 2.8rem);
+  color: var(--cream);
+  -webkit-text-stroke: 0.07em var(--burgundy);
+  paint-order: stroke fill;
+  font-weight: 800;
   text-shadow: 0 2px 24px rgb(0 0 0 / 0.7);
 }
 
@@ -146,7 +124,7 @@ body.griddle {
 
 .caption h2 {
   margin-top: 8px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(3rem, 8vw, 6rem);
   line-height: 0.92;
 }
@@ -159,8 +137,7 @@ body.griddle {
 }
 
 .caption--final h2 {
-  font-style: italic;
-  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  font-size: clamp(2rem, 5vw, 3.8rem);
 }
 
 .caption__actions {
@@ -179,7 +156,7 @@ body.griddle {
 
 .film__badge {
   position: absolute;
-  top: 72px;
+  top: calc(var(--header-h) + 10px);
   right: var(--gutter);
   padding: 4px 10px;
   border-radius: 999px;
@@ -279,8 +256,9 @@ body.griddle {
 }
 
 .g-intro p {
-  font-family: var(--serif);
-  font-size: clamp(1.7rem, 3.6vw, 2.8rem);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
   line-height: 1.15;
 }
 
@@ -292,8 +270,13 @@ body.griddle {
 }
 
 .griddle .section__title {
-  font-family: var(--serif);
-  font-size: clamp(2.6rem, 6.5vw, 4.8rem);
+  font-family: var(--display);
+  font-size: clamp(2.3rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  color: var(--cream);
+  -webkit-text-stroke: 0.07em var(--burgundy);
+  paint-order: stroke fill;
+  font-weight: 800;
 }
 
 .griddle .section__kicker {
@@ -334,25 +317,6 @@ body.griddle {
 }
 
 /* Menu */
-
-.griddle .menu-grid {
-  columns: 2 360px;
-  column-gap: clamp(32px, 6vw, 88px);
-  margin-top: 44px;
-}
-
-.griddle .menu-section {
-  break-inside: avoid;
-  margin-bottom: 44px;
-}
-
-.griddle .menu-section__title {
-  margin-bottom: 10px;
-  color: var(--tan-light);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 2rem;
-}
 
 .griddle .menu-item {
   padding: 13px 0;
@@ -409,17 +373,6 @@ body.griddle {
 
 /* Kitchen */
 
-.griddle .kitchen {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: 1px;
-  margin-top: 44px;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--rule);
-}
-
 .griddle .kitchen__point {
   padding: 28px;
   background: linear-gradient(160deg, #1c1919, #121010);
@@ -427,7 +380,7 @@ body.griddle {
 
 .griddle .kitchen__point h3 {
   margin-bottom: 8px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.7rem;
   color: var(--tan-light);
 }
@@ -492,7 +445,7 @@ body.griddle {
 
 .griddle .teams__side h3 {
   margin-bottom: 8px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(1.8rem, 3.6vw, 2.6rem);
 }
 
@@ -507,31 +460,18 @@ body.griddle {
 
 /* Rooms */
 
-.griddle .rooms {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 28px;
-  margin-top: 40px;
-}
-
 .griddle .room h3 {
   margin-bottom: 6px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.8rem;
 }
 
 /* Press */
 
-.griddle .press {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-  gap: 36px 44px;
-  margin-top: 44px;
-}
-
 .griddle .press__item blockquote p {
-  font-family: var(--serif);
-  font-size: 1.5rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 1.2rem;
   line-height: 1.2;
 }
 
@@ -582,7 +522,7 @@ body.griddle {
 
 .griddle .visit h3 {
   margin-bottom: 10px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.7rem;
   color: var(--tan-light);
 }
@@ -624,4 +564,9 @@ body.griddle {
   body.griddle {
     --nl-bottom: 76px;
   }
+}
+
+/* The header floats over the film rather than pushing it down. */
+.griddle .site-header {
+  margin-bottom: calc(-1 * var(--header-h));
 }
