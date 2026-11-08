@@ -59,6 +59,7 @@ ${s.siteMenu()}
 
   <section class="g-intro">
     <p>${esc(content.intro)}</p>
+    ${s.quickLinks('g-intro__links')}
   </section>
 
   ${s.menu()}

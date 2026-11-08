@@ -669,15 +669,23 @@ button {
   }
 }
 
-/* ---------- Navigation: one floating button, bottom centre ---------- */
+/* ---------- Navigation ----------
+   Phones and tablets: a labelled "Menu" button floating at the bottom centre.
+   Wide screens: a slim bar across the top with every section visible. */
 
 :root {
-  --menu-gap: calc(16px + env(safe-area-inset-bottom, 0px));
-  --nl-bottom: calc(var(--menu-gap) + 76px);
+  --header-h: 0px;
+  /* Lifted clear of the home indicator and Safari's bottom toolbar. */
+  --menu-gap: max(20px, calc(env(safe-area-inset-bottom, 0px) + 12px));
+  --nl-bottom: calc(var(--menu-gap) + 68px);
 }
 
 [id] {
-  scroll-margin-top: 16px;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.site-header {
+  display: none;
 }
 
 .menu-button {
@@ -685,23 +693,32 @@ button {
   z-index: 46;
   left: 50%;
   bottom: var(--menu-gap);
-  display: grid;
-  place-items: center;
-  width: 60px;
-  height: 60px;
-  margin-left: -30px;
-  padding: 0;
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 22px 0 18px;
   border: 0;
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--menu-bg, var(--burgundy));
   color: var(--menu-fg, var(--cream));
   box-shadow: 0 10px 28px rgb(0 0 0 / 0.3);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: scale 0.2s ease;
 }
 
 .menu-button:hover {
-  transform: scale(1.06);
+  scale: 1.04;
+}
+
+.menu-button__label {
+  min-width: 3.1em;
+  text-align: left;
 }
 
 .menu-button:focus-visible {
@@ -711,7 +728,8 @@ button {
 
 .menu-button__lines {
   position: relative;
-  width: 24px;
+  flex: none;
+  width: 22px;
   height: 17px;
 }
 
@@ -767,9 +785,9 @@ button {
   position: fixed;
   z-index: 45;
   left: 50%;
-  bottom: calc(var(--menu-gap) + 76px);
+  bottom: calc(var(--menu-gap) + 66px);
   width: min(400px, calc(100vw - 24px));
-  max-height: calc(100svh - var(--menu-gap) - 96px);
+  max-height: calc(100svh - var(--menu-gap) - 86px);
   overflow-y: auto;
   padding: 22px 24px 18px;
   border-radius: 24px;
@@ -856,6 +874,85 @@ button {
   .site-menu__links a {
     transition: none;
   }
+}
+
+/* Wide screens: every section visible in a slim bar that stays at the top. */
+@media (min-width: 960px) {
+  :root {
+    --header-h: 60px;
+    --nl-bottom: 20px;
+  }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    height: var(--header-h);
+    padding: 0 var(--gutter);
+    background: var(--header-bg);
+    color: var(--header-fg);
+    border-bottom: 1px solid var(--header-line, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .site-header__logo {
+    flex: none;
+    width: 132px;
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  .site-nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  /* Underline on hover and under the section you're reading. */
+  .site-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+  .site-nav a:hover::after,
+  .site-nav a[aria-current]::after {
+    transform: scaleX(1);
+  }
+  .menu-button,
+  .menu-backdrop,
+  .site-menu {
+    display: none !important;
+  }
+}
+
+/* Shortcuts to the menu and the address near the top of the page. */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.quick-links .button {
+  margin-top: 0;
 }
 
 /* ---------- Rails: swipeable rows ---------- */

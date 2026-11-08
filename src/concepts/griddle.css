@@ -11,6 +11,9 @@ body.griddle {
   --solid-fg: var(--burgundy-deep);
   --menu-bg: var(--cream);
   --menu-fg: var(--burgundy-deep);
+  --header-bg: rgb(13 10 10 / 0.86);
+  --header-fg: #ece6da;
+  --header-line: rgb(236 230 218 / 0.08);
   --accent: var(--tan-light);
   --chev-fg: #1a1414;
   --tan-light: #e2b07a;
@@ -148,7 +151,7 @@ body.griddle {
 
 .film__badge {
   position: absolute;
-  top: 14px;
+  top: calc(var(--header-h) + 14px);
   right: var(--gutter);
   padding: 4px 10px;
   border-radius: 999px;
@@ -530,6 +533,13 @@ body.griddle {
 .griddle .teams__side--smash h3 {
   color: var(--burgundy-deep);
   font-palette: --mb-cream;
+}
+
+/* On wide screens the top bar floats over the film rather than pushing it down. */
+@media (min-width: 960px) {
+  .griddle .site-header {
+    margin-bottom: calc(-1 * var(--header-h));
+  }
 }
 
 /* People's names stay in the plain typeface. */

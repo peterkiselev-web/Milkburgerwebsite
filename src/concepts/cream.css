@@ -8,6 +8,9 @@ body.cream {
   --pop-accent: var(--burgundy);
   --menu-bg: var(--burgundy);
   --menu-fg: var(--cream);
+  --header-bg: rgb(244 239 225 / 0.92);
+  --header-fg: var(--burgundy);
+  --header-line: rgb(90 22 32 / 0.14);
   --accent: var(--burgundy);
   --chev-fg: var(--cream);
   --logo-ink: var(--burgundy);

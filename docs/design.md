@@ -26,6 +26,11 @@ Both include, from one content file: menu, kitchen philosophy, chef, founders, s
 - **Brand:** colours taken from the restaurant's own material: burgundy and cream from the logo, black awning, rust banquettes, stainless steel, pale blue and timber from the rooms. Headings use Milk Burger, a custom two-colour font built from the logo itself: the nine letters in the logo (M, I, L, K, B, U, R, G, E) are traced from it, and the rest of the alphabet, digits and punctuation are drawn in the same melted, outlined style from Darumadrop One, the free font that measured closest to the logo's letters. The outline takes the text colour and the cream letter body can be swapped per section. Lowercase sets as small capitals. Rebuild it from a better logo file with `scripts/font/build.sh`. Body text is Instrument Sans. No serif anywhere.
 - **Logo:** a placeholder traced from the Instagram profile picture. Replace `src/brand/logo-placeholder.svg` with the original vector file. Its two layers (`--logo-ink` and `--logo-fill`) let each concept recolour it.
 - **Images:** each photo tries its local file, then a hosted fallback, then a styled placeholder. A missing file never shows a broken image.
+- **Navigation:** set by usability research rather than taste.
+  - On wide screens every section stays visible in a slim bar across the top, underlined where you are. In Nielsen Norman Group's test of 179 people on 6 sites, desktop visitors used navigation hidden behind a button in only 27% of tasks, against 48% when it was visible, and took 5 to 7 seconds longer to reach it.
+  - On phones and tablets a "Menu" button floats at the bottom centre. Hiding 7 links on a phone is the accepted trade-off. The word "Menu" is there because the three-line icon on its own isn't universally recognised.
+  - The button sits in the middle because Steven Hoober's studies of 1,333 phone users found people tap the centre of the screen most accurately (7 mm targets, against 12 mm in the corners). The top-right corner most sites use is the hardest spot to hit.
+  - "See the menu" and "Find us" shortcuts near the top mean the two most common jobs never depend on finding the menu.
 
 ## The Griddle: how the film works
 - The film section is tall (about 85% of a screen per beat) with a sticky full-screen canvas inside. Scroll position maps to progress from 0 to 1, eased so it glides.

@@ -22,6 +22,7 @@ ${s.siteMenu()}
       ${s.statusPill()}
       <span class="chip">Walk-ins only</span>
     </div>
+    ${s.quickLinks('hero__links')}
     ${s.rail(
       ['shopfront', 'burger', 'team', 'spread', 'mexican', 'chef', 'camembert']
         .map((key, i) => img(key, { className: 'tile', loading: i < 3 ? 'eager' : 'lazy' }))

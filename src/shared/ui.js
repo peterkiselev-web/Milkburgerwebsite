@@ -29,16 +29,19 @@ export function wireMenu(root = document) {
   const button = root.querySelector('[data-menu-button]');
   const panel = root.querySelector('[data-menu]');
   const backdrop = root.querySelector('[data-menu-backdrop]');
+  const label = root.querySelector('[data-menu-label]');
   if (!button || !panel) return;
   const links = [...panel.querySelectorAll('[data-nav]')];
-  const byId = new Map(links.map((a) => [a.dataset.nav, a]));
-  const sections = [...byId.keys()].map((id) => root.querySelector(`#${id}`)).filter(Boolean);
+  // Every link to a section, in the top bar and in the panel, so both show where you are.
+  const allLinks = [...root.querySelectorAll('[data-nav]')];
+  const ids = [...new Set(allLinks.map((a) => a.dataset.nav))];
+  const sections = ids.map((id) => root.querySelector(`#${id}`)).filter(Boolean);
   const isOpen = () => button.getAttribute('aria-expanded') === 'true';
   let hideTimer = 0;
 
   const setOpen = (open) => {
     button.setAttribute('aria-expanded', String(open));
-    button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (label) label.textContent = open ? 'Close' : 'Menu';
     clearTimeout(hideTimer);
     if (open) {
       panel.hidden = false;
@@ -82,7 +85,7 @@ export function wireMenu(root = document) {
   const setCurrent = (id) => {
     if (id === current) return;
     current = id;
-    links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.nav === id));
+    allLinks.forEach((a) => a.toggleAttribute('aria-current', a.dataset.nav === id));
   };
 
   // A section counts as current once it crosses the upper third of the screen.

@@ -34,30 +34,52 @@ export function rail(items, { label, className = '' } = {}) {
   </div>`;
 }
 
-// Navigation for every draft: one round button floating at the bottom centre of the screen.
-// It opens a panel with the sections, whether they're open right now, and directions.
+// Navigation, following the usability research (see docs/design.md):
+// - Wide screens: the sections stay visible in a slim bar across the top. Hiding them behind
+//   a button on desktop roughly halves how often people use the navigation.
+// - Phones and tablets: a labelled "Menu" button floats at the bottom centre, where it's easy
+//   to reach and tap, and opens a panel with the sections, the open status and directions.
+// Each entry: [section id, label in the top bar, label in the phone panel].
 export const navLinks = [
-  ['menu', 'Menu'],
-  ['chef', 'Story'],
-  ['room', 'Rooms'],
-  ['press', 'Press'],
-  ['faq', 'FAQ'],
-  ['contact', 'Contact'],
-  ['visit', 'Visit'],
+  ['menu', 'Menu', 'Food menu'],
+  ['chef', 'Story', 'Story'],
+  ['room', 'Rooms', 'Rooms'],
+  ['press', 'Press', 'Press'],
+  ['faq', 'FAQ', 'FAQ'],
+  ['contact', 'Contact', 'Contact'],
+  ['visit', 'Visit', 'Visit'],
 ];
+
+// In-page shortcuts to the two things most visitors want, so they don't depend on the menu.
+export function quickLinks(className = '') {
+  return `
+  <div class="quick-links ${className}">
+    <a class="button button--solid" href="#menu">See the menu</a>
+    <a class="button" href="#visit">Find us</a>
+  </div>`;
+}
 
 export function siteMenu() {
   const { contact } = content;
+  const barLink = ([id, text]) =>
+    id === 'visit'
+      ? `<a href="#visit" data-nav="visit" data-open-status><span class="status__dot" aria-hidden="true"></span>${esc(text)}</a>`
+      : `<a href="#${id}" data-nav="${id}">${esc(text)}</a>`;
   return `
-  <button type="button" class="menu-button" data-menu-button aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+  <header class="site-header">
+    <a href="#top" class="site-header__logo" aria-label="Milk Burger, back to top">${logo()}</a>
+    <nav class="site-nav" aria-label="Sections">${navLinks.map(barLink).join('')}</nav>
+  </header>
+  <button type="button" class="menu-button" data-menu-button aria-expanded="false" aria-controls="site-menu">
     <span class="menu-button__lines" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="menu-button__label" data-menu-label>Menu</span>
   </button>
   <div class="menu-backdrop" data-menu-backdrop hidden></div>
   <nav class="site-menu" id="site-menu" aria-label="Sections" data-menu hidden>
     <a href="#top" class="site-menu__logo" aria-label="Milk Burger, back to top">${logo()}</a>
     ${statusPill('site-menu__status')}
     <ul class="site-menu__links">
-      ${navLinks.map(([id, text]) => `<li><a href="#${id}" data-nav="${id}">${esc(text)}</a></li>`).join('')}
+      ${navLinks.map(([id, , text]) => `<li><a href="#${id}" data-nav="${id}">${esc(text)}</a></li>`).join('')}
     </ul>
     <p class="site-menu__meta">
       <span>${esc(contact.street)} · ${esc(content.walkIn.headline)}</span>
