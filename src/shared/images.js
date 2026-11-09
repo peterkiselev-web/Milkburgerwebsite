@@ -60,6 +60,74 @@ export const images = {
     width: 439,
     height: 584,
   },
+
+  // From the restaurant's press photo shoot, as published by Broadsheet (October 2026).
+  // Ask the owners for the full-size originals.
+  shopfrontDay: {
+    src: `${base}images/press-shopfront.jpg`,
+    alt: 'The Milk Burger shopfront at 50 Westbourne Grove: white frontage, black awning and the logo above the windows',
+    width: 860,
+    height: 600,
+    position: '62% 50%',
+    source: 'Press shoot via broadsheet.com/london/articles/milk-burger-notting-hill',
+  },
+  cherryPie: {
+    src: `${base}images/press-cherry-pie.jpg`,
+    alt: 'Fried cherry pie with vanilla soft serve in a steel coupe on printed Milk Burger paper',
+    width: 860,
+    height: 600,
+    position: '50% 55%',
+    source: 'Press shoot via broadsheet.com/london/articles/milk-burger-notting-hill',
+  },
+
+  // Customer photos from Google Maps reviews (November 2026). The photographers own these:
+  // fine for a draft, but get permission or replace them before the site goes live.
+  truffle: {
+    src: `${base}images/review-truffle.jpg`,
+    alt: 'The Bone Marrow & Truffle burger, its flag reading Truffle, with fries behind',
+    width: 1080,
+    height: 1440,
+    position: '50% 62%',
+    source: 'Google Maps review photo',
+  },
+  classicSmash: {
+    src: `${base}images/review-classic-smash.jpg`,
+    alt: 'A Classic Smash with orange melted cheese, its flag reading Classic, in front of a brown leather banquette',
+    width: 1080,
+    height: 1440,
+    position: '50% 60%',
+    source: 'Google Maps review photo',
+  },
+  tiledRoom: {
+    src: `${base}images/review-tiled-room.jpg`,
+    alt: 'The tiled room: terracotta tiles, a long timber counter and burgundy stools under a paper lantern',
+    width: 1080,
+    height: 1440,
+    source: 'Google Maps review photo',
+  },
+  bar: {
+    src: `${base}images/review-bar.jpg`,
+    alt: 'A bartender straining a cocktail into a coupe at the steel bar',
+    width: 1080,
+    height: 1350,
+    source: 'Google Maps review photo',
+  },
+  doughnuts: {
+    src: `${base}images/review-doughnuts.jpg`,
+    alt: 'Warm sugared doughnuts with chocolate soft serve in a steel coupe',
+    width: 1080,
+    height: 1440,
+    position: '50% 60%',
+    source: 'Google Maps review photo',
+  },
+  fries: {
+    src: `${base}images/review-fries.jpg`,
+    alt: "Koffmann's fries dusted with spice on printed Milk Burger paper",
+    width: 1080,
+    height: 1440,
+    position: '50% 60%',
+    source: 'Google Maps review photo',
+  },
 };
 
 export function img(key, { className = '', loading = 'lazy', sizes } = {}) {
@@ -73,6 +141,7 @@ export function img(key, { className = '', loading = 'lazy', sizes } = {}) {
     'decoding="async"',
     className && `class="${className}"`,
     sizes && `sizes="${sizes}"`,
+    image.position && `style="object-position: ${image.position}"`,
     image.fallback && `data-fallback="${image.fallback}"`,
   ].filter(Boolean);
   return `<img ${attrs.join(' ')}>`;

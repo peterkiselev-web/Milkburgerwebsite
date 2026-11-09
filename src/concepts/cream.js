@@ -8,6 +8,24 @@ import { img } from '../shared/images.js';
 
 const { content, esc } = s;
 
+// The hero gallery: the shopfront, the people and the rooms, with the best dishes in between.
+const gallery = [
+  'shopfrontDay', 'truffle', 'team', 'classicSmash', 'tiledRoom', 'mexican',
+  'bar', 'cherryPie', 'chef', 'doughnuts', 'camembert',
+];
+
+// Dish photos for the menu, captioned with the names on the printed menu.
+const dishPhotos = [
+  { image: 'truffle', caption: 'Bone Marrow & Truffle' },
+  { image: 'classicSmash', caption: 'Classic Smash' },
+  { image: 'mexican', caption: 'Nacho Burger' },
+  { image: 'camembert', caption: 'Fried Camembert' },
+  { image: 'fries', caption: "Koffmann's Fries" },
+  { image: 'burgerFries', caption: 'Burger & fries' },
+  { image: 'cherryPie', caption: 'Fried Cherry Pie & Soft Serve' },
+  { image: 'doughnuts', caption: 'Warm Doughnuts & Soft Serve' },
+];
+
 const html = `
 ${s.draftStrip('Concept: Cream')}
 ${s.siteMenu()}
@@ -24,15 +42,13 @@ ${s.siteMenu()}
     </div>
     ${s.quickLinks('hero__links')}
     ${s.rail(
-      ['shopfront', 'burger', 'team', 'spread', 'mexican', 'chef', 'camembert']
-        .map((key, i) => img(key, { className: 'tile', loading: i < 3 ? 'eager' : 'lazy' }))
-        .join(''),
+      gallery.map((key, i) => img(key, { className: 'tile', loading: i < 3 ? 'eager' : 'lazy' })).join(''),
       { label: 'Photos from Milk Burger', className: 'rail--gallery' },
     )}
     <p class="hero__intro">${esc(content.intro)}</p>
   </section>
 
-  ${s.menu()}
+  ${s.menu({ photos: dishPhotos })}
   ${s.kitchen()}
   ${s.chef()}
   ${s.founders()}
@@ -47,7 +63,7 @@ ${s.siteMenu()}
   ${s.visit()}
 </main>
 ${s.footer()}
-${s.newsletterPopup()}
+${s.newsletterPopup({ body: content.newsletter.popupBody })}
 `;
 
 start(document.getElementById('app'), html);

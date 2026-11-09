@@ -141,7 +141,8 @@ export function menuSection(section) {
   </details>`;
 }
 
-export function menu({ title = 'The menu' } = {}) {
+// `photos` lets a draft show its own dish photos instead of the shared list in the content file.
+export function menu({ title = 'The menu', photos = content.menu.photos } = {}) {
   const { menu: m } = content;
   return `
   <section class="section section--menu" id="menu" aria-labelledby="menu-title">
@@ -150,9 +151,9 @@ export function menu({ title = 'The menu' } = {}) {
       ${m.pricesConfirmed ? '' : `<p class="section__note">${esc(m.note)}</p>`}
     </header>
     ${
-      m.photos
+      photos
         ? rail(
-            m.photos
+            photos
               .map((p) => `<figure class="menu-photo">${img(p.image, { className: 'menu-photo__img' })}<figcaption>${esc(p.caption)}</figcaption></figure>`)
               .join(''),
             { label: 'Dishes from the menu', className: 'rail--photos' },
@@ -387,14 +388,15 @@ function newsletterForm(id, { inline = false } = {}) {
   </form>`;
 }
 
-export function newsletterPopup() {
+// `body` lets a draft use its own line under the heading.
+export function newsletterPopup({ body = content.newsletter.body } = {}) {
   const n = content.newsletter;
   return `
   <aside class="nl-pop" data-newsletter-pop role="dialog" aria-labelledby="nl-pop-title" data-delay="${n.delaySeconds}" hidden>
     <button class="nl-pop__close" type="button" data-nl-close aria-label="Close">&times;</button>
     ${logo('nl-pop__logo')}
     <h2 class="nl-pop__title" id="nl-pop-title">${esc(n.headline)}</h2>
-    <p class="nl-pop__body">${esc(n.body)}</p>
+    <p class="nl-pop__body">${esc(body)}</p>
     ${newsletterForm('nl-pop-email')}
   </aside>`;
 }

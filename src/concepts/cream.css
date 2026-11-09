@@ -364,6 +364,12 @@ body.cream {
   font-palette: --mb-cream;
 }
 
+.cream .nl-pop__body {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
 .cream .footer__nl-title {
   color: var(--burgundy);
   font-palette: --mb-cream;

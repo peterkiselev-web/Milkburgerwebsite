@@ -192,6 +192,7 @@
   "newsletter": {
     "headline": "Be first to know",
     "body": "New dishes, offers and news from Westbourne Grove, straight to your inbox. Unsubscribe any time.",
+    "popupBody": "Add your email to receive our latest news, changes to our menu and invitations to exclusive events.",
     "button": "Sign me up",
     "consent": "By signing up you agree to get emails from Milk Burger. We'll never share your address.",
     "thanks": "You're on the list.",
